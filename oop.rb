@@ -1,4 +1,16 @@
 # Write a class called Unicorn
+class Unicorn
+  def initialize(name)
+    @name = name
+    @color = "silver"
+  end
+  def say()
+    "*~*#{@name}*~*"
+  end
+end
+
+uni1 = Unicorn.new("Billy")
+p uni1.say
 # it should have a dynamic name attribute
 # it should have a color attribute, that is silver by default
 # it should have a method called "say" that returns whatever string is passed in, with "*~*" at the beginning and end of the string
@@ -6,11 +18,56 @@
 
 
 #  Write a class called Vampire
+class Vampire
+  def initialize(name)
+    @name = name
+    @pet = "bat"
+    @thirsty = true
+  end
+  def drink()
+    @thirsty = false
+  end
+end
+
+vamp1 = Vampire.new("Victor")
+p vamp1
+p vamp1.drink
 #  it should have a dynamic name attribute
 #  it should have a pet attribute, that is a bat, by default BUT it could be dynamic if info is passed in initially
 #  it should have a thirsty attribute, that is true by default
 #  it should have a drink method. When called, the thirsty attribute changes to false
 
+
+
+class Dragon
+  attr_reader :stomach, :is_hungry
+
+  def initialize(name, rider, color)
+    @name = name
+    @rider = rider
+    @color = color
+    @is_hungry = true
+    @stomach = 0
+  end
+
+  def eat
+    if @stomach == 4
+      @is_hungry = false
+    else
+      @stomach += 1
+    end
+  end
+  def name
+    return @name
+  end
+end
+
+
+drag1 = Dragon.new("Draccy","Nick","Black")
+5.times do
+  drag1.eat
+end
+puts "Is the dragon still hungry? #{drag1.is_hungry}"
 
 #  Write a Dragon class
 #  it should have a dynamic name attribute (string)
@@ -19,7 +76,43 @@
 #  it should have a is_hungry attribute that is true by default
 #  it should have a eat method. If the dragon eats 4 times, it is no longer hungry
 
+class Hobbit
+  attr_reader :celebrate_birthday, :is_old, :is_adult, :has_ring
 
+  def initialize(name,disposition)
+    @name = name
+    @disposition = disposition
+    @age = 0
+    @is_adult = false
+    @is_old = false
+    @has_ring = false
+  end
+
+  def celebrate_birthday
+    @age += 1
+    if @age >= 33 and @age < 101
+      @is_adult = true
+    elsif @age >= 101
+      @is_old = true
+      @is_adult = false
+    end
+  end
+  def has_ring
+    if @name == "Frodo"
+      @has_ring = true
+    else
+      @has_ring = false
+    end
+  end
+end
+
+hobbit1 = Hobbit.new("Frodo","Angry")
+120.times do
+    hobbit1.celebrate_birthday
+end
+p "Is the hobbit old? #{hobbit1.is_old}"
+p "Is the hobbit an adult? #{hobbit1.is_adult}"
+p "Does the hobbit have the ring? #{hobbit1.has_ring}"
 #  Write a Hobbit class
 #  it should have a dynamic name attribute (string)
 #  it should have a dynamic disposition attribute (string)
